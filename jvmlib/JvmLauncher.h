@@ -18,13 +18,13 @@ class JvmLauncher
 public:
 	JvmLauncher();
 	~JvmLauncher();
+	void create_vm(const std::string& jar_path);
     private:
 		JNIEnv* m_jvm_env;
-		std::string m_java_home;
-		HINSTANCE           m_hDllInstance = nullptr;
-
-		std::string         m_JavaHome;
-		std::string         m_ProductLibDir;
-		std::string         m_JvmDllLocation;
+		JavaVM* m_jvm;
+		HINSTANCE           m_dll_instance = nullptr;
+		std::string         m_java_home;
+		std::string         m_product_lib_dir;
+		std::string         m_jvm_dll_location;
 };
 
