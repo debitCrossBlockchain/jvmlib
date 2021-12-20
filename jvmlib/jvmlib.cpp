@@ -19,7 +19,7 @@
 #include <time.h>
 #include <errno.h>
 #endif
-
+#include"JvmLauncher.h"
 #include <stdio.h>
 #include <wchar.h>
 #include <algorithm>
@@ -27,6 +27,11 @@
 
 int main()
 {
+    JvmLauncher obj;
+    obj.create_vm("-Djava.class.path=.:C:/Program Files/Java/jdk1.8.0_202/jre/Test/com/hwb/Hello.jar");
+    jclass cls = obj.find_class("com/hwb/Hello");
+    obj.call_method_init(cls);
+    obj.call_method(cls,"main", "([Ljava/lang/String;)V");
     std::cout << "Hello World!\n";
 }
 
